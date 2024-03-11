@@ -1,0 +1,60 @@
+<div class="container" style="margin-top: 95px">
+    <div class="card col-md-6 offset-3 mt-2">
+      <div class="card-header">Modifier une Annonce de Colocation</div>
+      <div class="card-body">
+        <form [formGroup]="updateAnnouncementFormGroup" (ngSubmit)="handleUpdateAnnouncement()">
+          <div class="mb-3">
+            <label class="form-label">Superficie:</label>
+            <input type="number" formControlName="homeSize" class="form-control">
+            <span class="text-danger"
+                  *ngIf="updateAnnouncementFormGroup.controls['homeSize'].touched
+                  && updateAnnouncementFormGroup.controls['homeSize'].errors
+                  && updateAnnouncementFormGroup.controls['homeSize'].errors!['required']">
+              La taille est requise
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nombre de Personnes:</label>
+            <input type="number" formControlName="numPerso" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Equipement:</label>
+            <div>
+              <input type="radio" id="meuble" name="equipmentType" value="MEUBLE" formControlName="equipmentType" class="form-control">
+              <label for="meuble">MEUBLE</label>
+            </div>
+            <div>
+              <input type="radio" id="non-meuble" name="equipmentType" value="NON_MEUBLE" formControlName="equipmentType" class="form-control">
+              <label for="non-meuble">NON MEUBLE</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Adresse:</label>
+            <input type="text" formControlName="address" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Image URL:</label>
+            <input type="text" formControlName="imageHouse" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Prix par Personne:</label>
+            <input type="number" formControlName="pricePerPerson" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Type de Maison:</label>
+            <div>
+              <input type="radio" id="villa" name="houseType" value="VILLA" formControlName="houseType" class="form-control">
+              <label for="villa">VILLA</label>
+            </div>
+            <div>
+              <input type="radio" id="apartment" name="houseType" value="APARTMENT" formControlName="houseType" class="form-control">
+              <label for="apartment">APARTMENT</label>
+            </div>
+          </div>
+          <!-- Add other fields as needed based on the properties of the collocation announcement -->
+          <button [disabled]="!updateAnnouncementFormGroup.valid" class="btn btn-info">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

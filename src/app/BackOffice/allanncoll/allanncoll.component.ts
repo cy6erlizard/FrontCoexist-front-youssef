@@ -23,7 +23,8 @@ export class AllanncollComponent {
 
   ngOnInit(): void {
     this.collocationService.getAllAnnouncements().subscribe((data) => {
-      this.allAnnouncements = [data];
+      // @ts-ignore
+      this.allAnnouncements = data;
 
       this.loadFavoritedAnnouncements(); // Load favorited announcements
     });
