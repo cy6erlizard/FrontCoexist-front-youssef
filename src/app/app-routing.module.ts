@@ -12,6 +12,7 @@ import {AddanncollComponent} from "./BackOffice/addanncoll/addanncoll.component"
 import {AddBookingcollComponent} from "./BackOffice/add-bookingcoll/add-bookingcoll.component";
 import {AllBookingcollComponent} from "./BackOffice/all-bookingcoll/all-bookingcoll.component";
 import { FavorisComponent } from './BackOffice/favoris/favoris.component';
+import { UpdateanncollComponent } from './BackOffice/addanncoll/updateanncoll.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: "addColl",
         component: AddanncollComponent
+      },
+      {
+        path: "updateColl",
+        component: UpdateanncollComponent
       }
       ,
       {

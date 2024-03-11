@@ -24,6 +24,7 @@ import { AddanncollComponent } from './BackOffice/addanncoll/addanncoll.componen
 import { AddBookingcollComponent } from './BackOffice/add-bookingcoll/add-bookingcoll.component';
 import { AllBookingcollComponent } from './BackOffice/all-bookingcoll/all-bookingcoll.component';
 import { FavorisComponent } from './BackOffice/favoris/favoris.component'; 
+import { UpdateanncollComponent } from './BackOffice/addanncoll/updateanncoll.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FavorisComponent } from './BackOffice/favoris/favoris.component';
     AddanncollComponent,
     AddBookingcollComponent,
     AllBookingcollComponent,
-    FavorisComponent
+    FavorisComponent,
+    UpdateanncollComponent
 
   ],
   imports: [

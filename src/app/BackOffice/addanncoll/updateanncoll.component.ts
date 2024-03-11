@@ -5,6 +5,7 @@ import { AnnouncementCollocation } from '../../entity/AnnouncementCollocation';
 import { AnnouncementCollocationService } from '../../Services/announcement-collocation.service';
 import { EquipmentType } from '../../entity/EquipementType';
 
+
 @Component({
   selector: 'app-updateanncoll',
   templateUrl: './updateanncoll.component.html',

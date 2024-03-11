@@ -82,4 +82,10 @@ export class AllanncollComponent {
   isAnnouncementFavorited(announcement: AnnouncementCollocation): boolean {
     return this.favoritedAnnouncements.includes(announcement.annoncementCollocationId);
   }
+  redirectToUpdateAnnouncement(announcement: AnnouncementCollocation) {
+    const id = announcement.annoncementCollocationId;
+    this.route.navigate(['/updateColl', id]);
 }
+}
+
+
