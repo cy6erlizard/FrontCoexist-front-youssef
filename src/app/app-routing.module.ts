@@ -30,7 +30,7 @@ const routes: Routes = [
         component: AddanncollComponent
       },
       {
-        path: "updateColl",
+        path: "updateColl/:id",
         component: UpdateanncollComponent
       }
       ,

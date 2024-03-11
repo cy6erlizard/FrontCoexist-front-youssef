@@ -11,6 +11,7 @@ import { EquipmentType } from '../../entity/EquipementType';
   templateUrl: './updateanncoll.component.html',
   styleUrls: ['./updateanncoll.component.css']
 })
+
 export class UpdateanncollComponent implements OnInit {
   announcementId!: number;
   announcement!: AnnouncementCollocation;
@@ -28,16 +29,17 @@ export class UpdateanncollComponent implements OnInit {
     this.initializeForm();
     this.loadAnnouncement();
   }
+  
 
   initializeForm(): void {
     this.updateAnnouncementFormGroup = this.formBuilder.group({
-      homeSize: ['', Validators.required],
-      numPerso: ['', Validators.required],
-      equipmentType: [EquipmentType.MEUBLE],
-      address: [''],
-      imageHouse: [''],
-      pricePerPerson: ['', Validators.required],
-      houseType: ['']
+      homeSize: [this.announcement?.homeSize || '', Validators.required],
+      numPerso: [this.announcement?.numPerso || '', Validators.required],
+      equipmentType: [this.announcement?.equipmentType || EquipmentType.MEUBLE],
+      address: [this.announcement?.address || ''],
+      imageHouse: [this.announcement?.imageHouse || ''],
+      pricePerPerson: [this.announcement?.pricePerPerson || '', Validators.required],
+      houseType: [this.announcement?.houseType || '']
       // Add other fields as needed based on the properties of the collocation announcement
     });
   }
@@ -47,6 +49,7 @@ export class UpdateanncollComponent implements OnInit {
       next: (announcement) => {
         this.announcement = announcement;
         this.updateAnnouncementFormGroup.patchValue(announcement);
+        console.log(this.announcementId)
       },
       error: (error:Error) => {
         console.error('Error loading announcement:', error);
@@ -63,7 +66,7 @@ export class UpdateanncollComponent implements OnInit {
       this.collocationService.updateAnnouncement(updatedAnnouncement).subscribe({
         next: () => {
           alert("L'annonce a été mise à jour avec succès!");
-          this.route.navigateByUrl('/home/annColl');
+          this.route.navigateByUrl('/annColl');
         },
         error: (error) => {
           console.error('Error updating announcement:', error);
