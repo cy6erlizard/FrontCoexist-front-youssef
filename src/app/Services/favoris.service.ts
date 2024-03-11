@@ -9,10 +9,12 @@ import { AnnouncementCollocation } from "../entity/AnnouncementCollocation";
 })
 export class FavorisService {
 
+  readonly Add = 'http://localhost:8000/COEXIST/Announce/addAnnoceCollToFAVORIS/';
+  readonly Get = 'http://localhost:8000/COEXIST/Announce/all'
   constructor(private http: HttpClient) { }
 
   getFavoris(): Observable<AnnouncementCollocation[]> {
-    return this.http.get<AnnouncementCollocation[]>('/api/getFavoris')
+    return this.http.get<AnnouncementCollocation[]>(this.Get )
       .pipe(
         catchError((error) => {
           console.error('Error fetching favoris:', error);
@@ -21,10 +23,13 @@ export class FavorisService {
       );
   }
 
-  addAnnouncementToFavoris(userId: number, annId: number): Observable<any> {
-    return this.http.post<any>(`/addAnnoceCollToFAVORIS/${userId}/${annId}`, {});
-  }
+  // addAnnouncementToFavoris(userId: number, annId: number): Observable<any> {
+  //   return this.http.post<any>(`/COEXIST/addAnnoceCollToFAVORIS/${userId}/${annId}`, {});
+  // }
 
+  addAnnoucementFavoris(userId: number, annId: number): Observable<any> {
+    return this.http.post<any>(this.Add + userId + '/' + annId, {});
+  }
   removeAnnouncementFromFavoris(userId: number, annId: number): Observable<any> {
     return this.http.delete<any>(`/removeAnnoceCollFromFAVORIS/${userId}/${annId}`);
   }

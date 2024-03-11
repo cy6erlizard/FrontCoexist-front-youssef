@@ -42,7 +42,7 @@ export class AddanncollComponent {
           // Affichez un message de succès
           alert("L'annonce a été enregistrée avec succès!");
           // Naviguez vers "/all-announcement-collocation"
-          this.route.navigateByUrl("/home/annColl");
+          this.route.navigateByUrl("/annColl");
         },
         error: err => {
           // Journalisez l'erreur dans la console
