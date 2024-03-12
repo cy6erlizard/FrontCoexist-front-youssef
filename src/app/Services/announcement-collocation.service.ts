@@ -10,7 +10,7 @@ export class AnnouncementCollocationService {
   readonly Get_Announcement = 'http://localhost:8000/COEXIST/Announce/get_all_AnnoncementCollocations';
   readonly ADD_Announcement = 'http://localhost:8000/COEXIST/Announce/add-AnnoncementCollocation';
   readonly DeleteAnnouncement_Announcement = 'http://localhost:8000/COEXIST/Announce/deleteAnnoncementCollocation/';
-  readonly Get_AnnouncementById ='http://localhost:8000/COEXIST/Announce/get_AnoouncmementById/'
+  readonly Get_AnnouncementById ='http://localhost:8000/COEXIST/Announce/get_AnnoncementById/'
   readonly UPDATE_Announcement = 'http://localhost:8000/COEXIST/Announce/updateAnnoncementCollocation/';
 
   constructor(private httpClient: HttpClient) {
@@ -29,6 +29,9 @@ export class AnnouncementCollocationService {
     return this.httpClient.delete(this.DeleteAnnouncement_Announcement+id);
   }
   public updateAnnouncement(announcementCollocation: AnnouncementCollocation): Observable<AnnouncementCollocation> {
-    return this.httpClient.post<AnnouncementCollocation>(this.UPDATE_Announcement, announcementCollocation);
+    const url = `${this.UPDATE_Announcement}/${announcementCollocation.annoncementCollocationId}`; // Assuming `id` is a property of AnnouncementCollocation
+    return this.httpClient.put<AnnouncementCollocation>(url, announcementCollocation);
   }
+  
+  
 }

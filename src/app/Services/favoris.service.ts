@@ -11,6 +11,7 @@ export class FavorisService {
 
   readonly Add = 'http://localhost:8000/COEXIST/Announce/addAnnoceCollToFAVORIS/';
   readonly Get = 'http://localhost:8000/COEXIST/Announce/all'
+  readonly GetByid = 'http://localhost:8000/COEXIST/Announce/get_AnnoncementById/'
   constructor(private http: HttpClient) { }
 
   getFavoris(): Observable<AnnouncementCollocation[]> {
@@ -26,6 +27,10 @@ export class FavorisService {
   // addAnnouncementToFavoris(userId: number, annId: number): Observable<any> {
   //   return this.http.post<any>(`/COEXIST/addAnnoceCollToFAVORIS/${userId}/${annId}`, {});
   // }
+
+  getAnnouncementById(id: number): Observable<AnnouncementCollocation> {
+    return this.http.get<AnnouncementCollocation>(this.GetByid + id);
+  }
 
   addAnnoucementFavoris(userId: number, annId: number): Observable<any> {
     return this.http.post<any>(this.Add + userId + '/' + annId, {});

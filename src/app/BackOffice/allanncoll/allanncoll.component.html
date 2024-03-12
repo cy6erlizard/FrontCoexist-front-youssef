@@ -1,46 +1,35 @@
-<div class="main-allanncoll-list">
-  <h2>Liste de toutes les annonces de colocation</h2>
-  <button (click)="redirectToCreateAnnouncement()" class="create-btn">Créer une annonce de colocation</button>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Superficie</th>
-        <th>Nombre de personnes</th>
-        <th>Équipement</th>
-        <th>Adresse</th>
-        <th>Image</th>
-        <th>Prix par personne</th>
-        <th>Type de maison</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let annonce of allAnnouncements">
-        <td>{{ annonce.homeSize }}</td>
-        <td>{{ annonce.numPerso }}</td>
-        <td>{{ annonce.equipmentType }}</td>
-        <td>{{ annonce.address }}</td>
-        <td>
-          <div style="width: 40px; height: 40px;">
-            <img src="{{ annonce.imageHouse }}" alt="Maison" style="width: 100%; height: 100%;">
+<div class="container">
+  <div class="main-allanncoll-list">
+    <h2>Liste de toutes les annonces de colocation</h2>
+    <button (click)="redirectToCreateAnnouncement()" class="btn btn-primary mb-3">Créer une annonce de colocation</button>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let annonce of allAnnouncements" (click)="redirectToUpdateAnnouncement(annonce)">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Annonce de colocation</h5>
+            <ul class="list-unstyled">
+              <li><strong>Superficie:</strong> {{ annonce.homeSize }}</li>
+              <li><strong>Nombre de personnes:</strong> {{ annonce.numPerso }}</li>
+              <li><strong>Équipement:</strong> {{ annonce.equipmentType }}</li>
+              <li><strong>Adresse:</strong> {{ annonce.address }}</li>
+              <li><strong>Prix par personne:</strong> {{ annonce.pricePerPerson }}</li>
+              <li><strong>Type de maison:</strong> {{ annonce.houseType }}</li>
+            </ul>
+            <button class="btn btn-danger" (click)="handleDeleteAnnouncement(annonce)">Supprimer</button>
+            <button class="btn btn-secondary ml-2" (click)="addOrRemoveFavoris(annonce)">♥</button>
+            <button class="btn btn-primary ml-2" (click)="updateComponent(annonce)">Modifier</button>
           </div>
-        </td>
-        <td>{{ annonce.pricePerPerson }}</td>
-        <td>{{ annonce.houseType }}</td>
-        <td>
-          <!-- Bouton de suppression -->
-          <button (click)="handleDeleteAnnouncement(annonce)">Supprimer</button>
-          <button (click)="addOrRemoveFavoris(annonce)">♥</button>
-          <!-- Bouton de mise à jour -->
-          <button (click)="redirectToUpdateAnnouncement(annonce)">Modifier</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div *ngIf="allAnnouncements.length === 0">
-    <p>Aucune annonce de colocation n'est disponible pour le moment.</p>
+          <div class="card-image-container">
+            <img class="card-img-top" *ngIf="annonce.imageHouse" [src]="annonce.imageHouse" alt="Card image cap">
+            <div class="no-image" *ngIf="!annonce.imageHouse"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="allAnnouncements.length === 0">
+      <div class="col">
+        <p>Aucune annonce de colocation n'est disponible pour le moment.</p>
+      </div>
+    </div>
   </div>
-
-  <!-- Bouton "Créer une annonce de colocation" -->
 </div>

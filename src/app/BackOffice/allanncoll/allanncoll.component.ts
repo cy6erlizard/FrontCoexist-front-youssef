@@ -11,6 +11,7 @@ import { FavorisService } from "../../Services/favoris.service";
   styleUrls: ['./allanncoll.component.css']
 })
 export class AllanncollComponent {
+
   newAnnouncementFormGroup!: FormGroup;
   allAnnouncements: AnnouncementCollocation[] = [];
   favoritedAnnouncements: number[] = []; // Array to store IDs of favorited announcements
@@ -87,7 +88,12 @@ export class AllanncollComponent {
   }
   redirectToUpdateAnnouncement(announcement: AnnouncementCollocation) {
     const id = announcement.annoncementCollocationId;
-    this.route.navigate(['/updateColl', id]);
+    this.route.navigate(['/annColl']);
+}
+updateComponent(announcement: AnnouncementCollocation):boolean{
+  const id = announcement.annoncementCollocationId;
+  this.route.navigate(['/updateColl',id]);
+  return false;
 }
 }
 
